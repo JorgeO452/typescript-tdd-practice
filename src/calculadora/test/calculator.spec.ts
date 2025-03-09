@@ -1,4 +1,5 @@
 import { sum } from "../lib/sum";
+import { subtract } from "../lib/subtract";
 
 describe("Sum calculation", () => {
   it("Should add 2 + 2 and get 6", () => {
@@ -22,7 +23,32 @@ describe("Sum calculation", () => {
     );
   });
   it("Should throw an error when trying to add a null", () => {
-    expect(() => sum(2, null as any as number)).toThrow(
+    expect(() => sum(2, null as any as number)).toThrow(`null is not defined`);
+  });
+});
+describe("Subtract calculation", () => {
+  it("Should subtract 2 - 2 and get 0", () => {
+    expect(subtract(2, 2)).toBe(0);
+  });
+  it("Should subtract 6 - 2 - 2 and get 2", () => {
+    expect(subtract(6, 2, 2)).toBe(2);
+  });
+  it("Should subtract 2 and get 2", () => {
+    expect(subtract(2 - 6)).toBe(-4);
+  });
+  it("Should subtract 0 and get 0", () => {
+    expect(subtract(0)).toBe(0);
+  });
+  it("Should throw an error when trying to subtract a letra", () => {
+    expect(() => subtract(2, "h" as any as number)).toThrow(`h is not defined`);
+  });
+  it("Should throw an error when trying to subtract an undefined", () => {
+    expect(() => subtract(2, undefined as any as number)).toThrow(
+      `undefined is not defined`
+    );
+  });
+  it("Should throw an error when trying to subtract a null", () => {
+    expect(() => subtract(2, null as any as number)).toThrow(
       `null is not defined`
     );
   });
